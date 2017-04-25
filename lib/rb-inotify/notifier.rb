@@ -85,7 +85,7 @@ module INotify
       unless self.class.supports_ruby_io?
         raise NotImplementedError.new("INotify::Notifier#to_io is not supported under JRuby")
       end
-      @io ||= IO.new(@fd)
+      @io ||= IO.new(@fd, autoclose: false)
     end
 
     # Watches a file or directory for changes,
